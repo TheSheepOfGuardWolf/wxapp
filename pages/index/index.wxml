@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="container">
+  <view wx:if="{{!isShowMomo}}" class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>  
+  </view>
+
+  <view wx:if="{{!isShowMomo}}" class="usermotto" >
+    <text class="user-motto">{{motto}}</text>
+  </view>
+      
+  <view wx:if="{{isShowMomo}}" class="userinfo">
+    <image class="momo" src="{{momoUrl}}" mode="aspectFill"></image>
+
+    <view class="display">
+      <text>{{disText}}</text>
+    </view>
+
+    <view class="btnView" wx:if="{{!isYes}}">
+      <view>
+        <button class="btn1" hover-class="button-hover" bindtap="onClickYes">{{buttonYesText}}           </button>
+      </view>
+     
+      <view>
+        <button class="btn1" hover-class="button-hover" bindtap="onClickNo" disabled='{{isDisabled}}'>{{buttonNoText}}</button>
+      </view>
+    </view>
+    <view wx:else>
+      <button class="btn2" hover-class="button-hover" bindtap="sendRed">恭喜发财，大吉大利</button>
+    </view>
+
+  </view>
+  
+  
+</view>
